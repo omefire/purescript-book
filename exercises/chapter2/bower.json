@@ -17,10 +17,9 @@
     "package.json"
   ],
   "dependencies": {
-    "purescript-math": "^2.0.0",
-    "purescript-console": "^3.0.0"
-  },
-  "devDependencies": {
-    "purescript-psci-support": "^3.0.0"
+    "purescript-math": "^2.1.1",
+    "purescript-console": "^4.1.0",
+    "purescript-psci-support": "^4.0.0",
+    "purescript-globals": "^4.0.0"
   }
 }
