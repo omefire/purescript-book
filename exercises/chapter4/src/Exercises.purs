@@ -2,9 +2,11 @@ module Exercises where
 
 import Prelude
 
-import Data.Array (uncons, filter)
+import Data.Array (uncons, filter, (..), length, (!!))
 import Data.Maybe
 import Data.Ring (negate)
+import Control.MonadZero (guard)
+import Data.Tuple (Tuple(..))
 
 isEven :: Int -> Boolean
 isEven n | n == 1 = false
@@ -30,3 +32,26 @@ removeNegativeNumbers :: Array Int -> Array Int
 removeNegativeNumbers xs = filter (\x -> x > 0) xs
 
 infixr 5 filter as <$?>
+
+factors n = do
+  i <- 1..n
+  j <- i..n
+  guard $ i * j == n
+  pure [i, j]
+
+isPrime :: Int -> Boolean
+isPrime n = length (factors n) == 1
+
+cartesianProduct :: forall a b. Array a -> Array b -> Array (Tuple a b)
+cartesianProduct xs ys = do
+    x <- xs
+    y <- ys
+    pure $ Tuple x y
+
+triples :: Int -> Array (Array Int)
+triples n = do
+    x <- 1..n
+    y <- 1..n
+    z <- 1..n
+    guard $ (x * x) + (y * y) == (z * z)
+    pure $ [x, y, z]
