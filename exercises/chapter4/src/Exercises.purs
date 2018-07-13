@@ -2,11 +2,13 @@ module Exercises where
 
 import Prelude
 
-import Data.Array (uncons, filter, (..), length, (!!))
+import Data.Array (uncons, filter, (..), length, (!!), (:))
 import Data.Maybe
 import Data.Ring (negate)
 import Control.MonadZero (guard)
 import Data.Tuple (Tuple(..))
+import Math ( (%) )
+import Data.Int (toNumber)
 
 isEven :: Int -> Boolean
 isEven n | n == 1 = false
@@ -55,3 +57,19 @@ triples n = do
     z <- 1..n
     guard $ (x * x) + (y * y) == (z * z)
     pure $ [x, y, z]
+
+-- factorizations :: Number -> Array (Array Number)
+-- factorizations n = do
+--   i <- helper n
+--   guard $ i > 1 && i < n
+--   pure $ i : factorizations ( n / i )
+
+--   where
+--     helper :: Number -> Array Number
+--     helper n = do
+--       i <- 1 .. n
+--       guard $ (toNumber n) % (toNumber i) == (toNumber 0)
+--       pure (toNumber i)
+
+test :: Boolean
+test = isPrime 5
